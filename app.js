@@ -1,12 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose=require('mongoose');
-mongoose.connect(process.env.DATABASE_URL, { 
-    ssl: true // Use if your MongoDB setup requires SSL (e.g., MongoDB Atlas)
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    ssl: true, // Enable SSL if required by your MongoDB setup
   })
     .then(() => console.log("Connected to MongoDB"))
     .catch((error) => console.error("MongoDB connection error:", error));
- 
+  
   
 const userModel = require('./model/user');
 const postModel = require('./model/post');
