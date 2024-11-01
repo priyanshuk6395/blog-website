@@ -146,5 +146,17 @@ app.post('/post', isLoggedIn, async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-console.log(PORT);
-app.listen(PORT);
+
+// Log the port being used
+console.log(`Server is running on port: ${PORT}`);
+
+// Start the server and handle potential errors
+app.listen(PORT, (err) => {
+    if (err) {
+        console.error("Error starting the server:", err);
+        process.exit(1); // Exit the process if there's an error
+    } else {
+        console.log(`Server is listening on port ${PORT}`);
+    }
+});
+
