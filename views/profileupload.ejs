@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-full h-screen bg-zinc-950 p-10 text-white">
+        <h3 class="text-3xl mb-5">Upload File</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <input class="px-5 py-3 outline-none rounded-md bg-blue-500" type="submit" value="Upload File">
+        </form>
+        </div>
+</body>
+</html>
