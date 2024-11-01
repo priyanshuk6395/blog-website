@@ -1,0 +1,30 @@
+# render.yaml
+
+services:
+  # Backend service configuration
+  - type: web
+    name: mern-backend
+    env: node
+    plan: free  # Change plan based on your needs
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000  # Render uses port 10000 by default for web services
+      - key: DATABASE_URL
+        value: <your-database-url>  # Replace with your MongoDB connection string
+
+  # Frontend service configuration
+  - type: web
+    name: mern-frontend
+    env: node
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "serve -s build -l $PORT"
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production

@@ -1,4 +1,7 @@
+require('dotenv').config();
 const express = require('express');
+const mongoose=require('mongoose');
+mongoose.connect(process.env.DATABASE_URL);
 const userModel = require('./model/user');
 const postModel = require('./model/post');
 const path = require('path');
@@ -142,4 +145,6 @@ app.post('/post', isLoggedIn, async (req, res) => {
     res.redirect("/profile");
 });
 
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+console.log(PORT);
+app.listen(PORT);
