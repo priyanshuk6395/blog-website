@@ -73,7 +73,7 @@ app.post('/create', async (req, res) => {
                         age,
                         password: hash
                     });
-                    let token = jwt.sign({ email: email, userid: newUser._id }, "priyu");
+                    let token = jwt.sign({ email: email, userid: newUser._id }, process.env.JWT_SECRET);
                     res.cookie("token", token);
                     res.redirect("/profile")
                 });
