@@ -1,12 +1,24 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose=require('mongoose');
-mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    ssl: true, // Enable SSL if required by your MongoDB setup
-  })
-    .then(() => console.log("Connected to MongoDB"))
-    .catch((error) => console.error("MongoDB connection error:", error));
+const mongoose = require('mongoose');// Load environment variables from .env
+
+const uri = process.env.DATABASE_URL;
+
+async function connectToDatabase() {
+  try {
+    // Connect to MongoDB using Mongoose
+    await mongoose.connect(uri, { ssl: true });
+    console.log("Connected to MongoDB successfully!");
+
+    // Optionally, you can ping the database to confirm the connection is stable
+    await mongoose.connection.db.admin().command({ ping: 1 });
+    console.log("Pinged your deployment successfully.");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+}
+
+connectToDatabase();
   
   
 const userModel = require('./model/user');
