@@ -1,7 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose=require('mongoose');
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    ssl: true,
+    tlsInsecure: true // Use with caution; this disables hostname validation
+  })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => console.error("MongoDB connection error:", error));
+  
 const userModel = require('./model/user');
 const postModel = require('./model/post');
 const path = require('path');
