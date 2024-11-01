@@ -3,12 +3,11 @@ const express = require('express');
 const mongoose=require('mongoose');
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    ssl: true,
-    tlsInsecure: true // Use with caution; this disables hostname validation
+    ssl: true, // Enable SSL if required by your MongoDB setup
   })
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((error) => console.error("MongoDB connection error:", error));
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((error) => console.error("MongoDB connection error:", error));
+  
   
 const userModel = require('./model/user');
 const postModel = require('./model/post');
