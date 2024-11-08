@@ -26,8 +26,8 @@ To install and set up the project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/mini-blog-backend.git
-   cd mini-blog-backend
+   git clone https://github.com/priyanshuk6395/blog-website.git
+   cd blog-website
 2. **Install dependencies**:
    ```bash
    npm install
